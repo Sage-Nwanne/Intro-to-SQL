@@ -16,7 +16,7 @@
 -- SELECT countrylanguages.language
 -- FROM countries
 -- JOIN countrylanguages ON countries.code = countrylanguages.countrycode
--- WHERE countries.name = 'Holy See (Vatican City State)'
+-- WHERE countries.name = 'Holy See (Va */-tican City State)'
 --   AND countrylanguages.isofficial = TRUE;
 
 --   answer -> Italian
@@ -34,6 +34,7 @@
 -- HAVING COUNT(*) = 1 
 -- AND MAX(CASE WHEN language = 'Italian' THEN 1 ELSE 0 END) = 1;
 
+--   answer -> San Marino
 
 -- Clue #4: 
 -- We're booking the first flight out – maybe we've actually got a chance to catch her this time. There are only two cities she could be flying to in the country. 
@@ -44,6 +45,10 @@
 -- JOIN countries ON cities.countrycode = countries.code
 -- WHERE countries.name = 'San Marino'
 -- AND cities.name != 'San Marino';;
+
+--   answer -> Serravalle
+
+
 
 
 -- Clue #5: 
@@ -57,25 +62,31 @@
 -- AND cities.name LIKE 'San%'
 -- AND cities.name != 'San Marino';;
 
+--   answer -> San Miguel
+
+
+-- SELECT cities.name , countries.name 
+-- FROM cities 
+-- JOIN countries ON cities.countrycode = countries.code 
+-- WHERE cities.name = 'San Miguel' AND countries.continent = 'South America';
+
+
+
+--   answer -> Argentina
+
+
 
 -- Clue #6: 
 -- We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
 -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
 -- follow right behind you!
 
--- SELECT cities.name
--- FROM cities
--- JOIN countries ON cities.countrycode = countries.code
--- JOIN cities capital ON countries.capital = capital.id
--- WHERE countries.name = (
---     SELECT countries.name
---     FROM cities
---     JOIN countries ON cities.countrycode = countries.code
---     WHERE countries.continent = 'South America'
---     AND cities.name LIKE 'San%'
---     AND cities.name != 'San Marino'
---     LIMIT 1
--- );;
+-- SELECT cities.name 
+-- FROM cities 
+-- JOIN countries ON countries.code = cities.countrycode 
+-- WHERE cities.id = countries.capital AND countries.name = 'Argentina' ;
+
+--   answer -> Buenos Aires
 
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. 
@@ -93,6 +104,8 @@
 
 -- We're counting on you, gumshoe. Find out where she's headed, send us the info, and we'll be sure to meet her at the gates with bells on.
 
--- SELECT cities.name, cities.population
--- FROM cities
--- WHERE population = 91085;
+-- SELECT cities.population, cities.name, countries.name  
+-- FROM cities JOIN countries ON countries.code = cities.countrycode WHERE cities.population = 91084;
+
+
+--   answer -> Santa Monica, United States
