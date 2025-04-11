@@ -59,20 +59,20 @@
 -- FROM cities
 -- JOIN countries ON cities.countrycode = countries.code
 -- WHERE countries.continent = 'South America'
--- AND cities.name LIKE 'San%'
--- AND cities.name != 'San Marino';;
+-- AND cities.name LIKE 'Serra%'
+-- AND cities.name != 'Serravalle';;
 
---   answer -> San Miguel
+--   answer -> Serra 
 
 
 -- SELECT cities.name , countries.name 
 -- FROM cities 
 -- JOIN countries ON cities.countrycode = countries.code 
--- WHERE cities.name = 'San Miguel' AND countries.continent = 'South America';
+-- WHERE cities.name = 'Serra' AND countries.continent = 'South America';
 
 
 
---   answer -> Argentina
+--   answer -> Brazil
 
 
 
@@ -84,9 +84,9 @@
 -- SELECT cities.name 
 -- FROM cities 
 -- JOIN countries ON countries.code = cities.countrycode 
--- WHERE cities.id = countries.capital AND countries.name = 'Argentina' ;
+-- WHERE cities.id = countries.capital AND countries.name = 'Brazil' ;
 
---   answer -> Buenos Aires
+--   answer -> Brasília
 
 
 -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to the boarding gates. 
